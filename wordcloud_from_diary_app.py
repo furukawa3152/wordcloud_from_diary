@@ -38,13 +38,15 @@ def nouns_maker(text):
     nouns = " ".join(noun_list)
     return nouns
 
-st.title('「頑張った」の図')
+st.title("「頑張った！」ワードクラウド")
 st.header("WordCloud from Efficacy!")
+st.text("これまでの日誌で褒めたことを可視化します。")
+st.text("日誌の数が少ないと上手く出力されません。２０日以上日誌をつけてから推奨です。")
 with st.form("my_form", clear_on_submit=False):
     line_id = st.text_input('diaryappのユーザーIDを入力して下さい。')
     # スペースや改行があれば削除
     line_id = ''.join(line_id.split())
-    submitted = st.form_submit_button("日記を出力")
+    submitted = st.form_submit_button("ワードクラウドを出力")
 if submitted:
     try:
         df = df[df.iloc[:, 6] == line_id ]
